@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartão Azulzinho · Onboarding · Logcomex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Funnel+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#6613D0;
+    --purple-dark:#2D085D;
+    --purple-light:#E2D0FA;
+    --orange:#FE8F1C;
+    --bg:#F5F6FC;
+    --fg:#0B0D19;
+    --success:#1FAC66;
+    --info:#1DA6AE;
+    --warning:#C99D02;
+    --danger:#C70404;
+    --card:#FFFFFF;
+    --muted:#6B7280;
+    --border:#E5E7EB;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--fg);
+    line-height:1.55;
+  }
+  h1,h2,h3,h4{
+    font-family:'Funnel Display',sans-serif;
+    margin:0;
+  }
+  .container{max-width:1040px;margin:0 auto;padding:0 24px;}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 55%, #8E44ED 100%);
+    color:#fff;
+    padding:56px 0 64px;
+  }
+  .hero-inner{display:flex;align-items:center;gap:16px;margin-bottom:28px;}
+  .logo-mark{width:34px;height:34px;flex-shrink:0;}
+  .brand-name{font-family:'Funnel Display';font-weight:700;font-size:20px;letter-spacing:.2px;}
+  .hero h1{font-size:34px;font-weight:800;margin-bottom:10px;max-width:640px;}
+  .hero p{font-size:16px;opacity:.92;max-width:560px;font-weight:300;}
+  .hero-badge{
+    display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+    padding:6px 14px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;margin-bottom:18px;
+  }
+
+  section{padding:52px 0;}
+  .section-tag{
+    display:flex;align-items:center;gap:10px;margin-bottom:6px;
+  }
+  .section-tag .bar{width:4px;height:20px;background:var(--purple);border-radius:2px;}
+  .section-tag span{
+    font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--purple);
+  }
+  .section-title{font-size:26px;font-weight:700;margin-bottom:8px;}
+  .section-sub{color:var(--muted);font-size:14.5px;margin-bottom:28px;max-width:640px;}
+
+  /* ANTES / AGORA comparison */
+  .compare-wrap{
+    display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;
+  }
+  .compare-col{
+    background:var(--card);border-radius:16px;padding:26px 24px;
+  }
+  .compare-col.antes{border:2px solid #E8E1F0;}
+  .compare-col.agora{border:2px solid var(--purple); box-shadow:0 8px 24px -8px rgba(102,19,208,.25);}
+  .compare-head{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+  .compare-head .dot{width:10px;height:10px;border-radius:50%;}
+  .antes .dot{background:#B0AAB8;}
+  .agora .dot{background:var(--purple);}
+  .compare-head h3{font-size:17px;font-weight:700;}
+  .antes h3{color:#6B6577;}
+  .agora h3{color:var(--purple);}
+  .compare-arrow{
+    display:flex;align-items:center;justify-content:center;padding:0 14px;color:var(--purple);font-size:22px;
+  }
+  .compare-item{
+    display:flex;gap:10px;padding:13px 0;border-bottom:1px solid var(--border);font-size:14px;
+  }
+  .compare-item:last-child{border-bottom:none;}
+  .compare-item .ico{flex-shrink:0;font-size:16px;line-height:1.4;}
+  .antes .compare-item{color:#5B5568;}
+  .agora .compare-item{color:var(--fg);font-weight:500;}
+  @media (max-width:760px){
+    .compare-wrap{grid-template-columns:1fr;gap:14px;}
+    .compare-arrow{transform:rotate(90deg);padding:0;}
+  }
+
+  /* GAINS GRID */
+  .gains-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:760px){.gains-grid{grid-template-columns:1fr;}}
+  .gain-card{
+    background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;
+    display:flex;gap:14px;
+  }
+  .gain-ico{
+    width:38px;height:38px;border-radius:10px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:18px;
+    background:var(--purple-light);
+  }
+  .gain-card h4{font-size:15px;font-weight:600;margin-bottom:5px;color:var(--fg);}
+  .gain-card p{font-size:13.5px;color:var(--muted);margin:0;}
+
+  /* RULES */
+  .rules-list{display:flex;flex-direction:column;gap:12px;}
+  .rule-item{
+    background:var(--card);border-radius:12px;padding:16px 18px;border-left:4px solid var(--purple);
+    font-size:14.5px;display:flex;gap:12px;
+  }
+  .rule-item b{color:var(--purple-dark);}
+  .rule-ico{flex-shrink:0;font-size:17px;}
+  .rule-item.national{border-left-color:var(--info);background:#F0FAFB;}
+  .rule-item.national .subtext{color:var(--muted);font-size:13px;margin-top:4px;}
+  .national-callout{
+    margin-top:14px;padding:14px 16px;background:#fff;border:1px solid #D8ECEE;border-radius:10px;
+  }
+  .national-callout p{margin:0 0 8px;font-size:13.5px;}
+  .national-callout p:last-child{margin-bottom:0;}
+  .national-callout ul{margin:0 0 10px;padding-left:20px;font-size:13.5px;}
+  .national-callout li{margin-bottom:3px;}
+
+  /* ATTENTION POINTS */
+  .attn-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:760px){.attn-grid{grid-template-columns:1fr;}}
+  .attn-card{
+    background:var(--card);border-radius:12px;padding:16px 18px;border:1px solid var(--border);font-size:14px;
+  }
+  .attn-card.warn{border-color:#F0D98A;background:#FFFCF3;}
+  .attn-card.danger{border-color:#F0B8B8;background:#FFF6F6;}
+  .attn-tag{
+    display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+    padding:3px 8px;border-radius:6px;margin-bottom:8px;
+  }
+  .attn-card.warn .attn-tag{background:#FCEFC7;color:#8A6D00;}
+  .attn-card.danger .attn-tag{background:#FBDADA;color:var(--danger);}
+  .attn-card.neutral .attn-tag{background:var(--purple-light);color:var(--purple-dark);}
+
+  /* SUPPORT / CONTACT FOOTER */
+  .support-section{
+    background:linear-gradient(135deg, var(--purple-dark), var(--purple));
+    color:#fff;border-radius:20px;padding:36px 32px;margin:0 auto;
+  }
+  .support-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:22px;}
+  @media (max-width:760px){.support-grid{grid-template-columns:1fr;}}
+  .support-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:20px;}
+  .support-card h4{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .support-card p{font-size:13.5px;margin:6px 0;opacity:.92;}
+  .support-card a{color:#fff;text-decoration:underline;}
+  .support-note{font-size:12.5px;opacity:.75;margin-top:20px;}
+
+  footer{text-align:center;padding:28px 0 40px;color:var(--muted);font-size:12px;}
+  .quickbar{
+    margin-top:-32px;position:relative;z-index:2;
+  }
+  .quickbar-inner{
+    background:var(--card);border-radius:16px;box-shadow:0 12px 32px -12px rgba(45,8,93,.25);
+    padding:20px 24px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+    border:1px solid var(--border);
+  }
+  .quickbar-label{font-size:13px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:8px;}
+  .quickbar-links{display:flex;gap:10px;flex-wrap:wrap;}
+  .quicklink{
+    display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;
+    font-size:13.5px;font-weight:600;text-decoration:none;transition:transform .1s;
+  }
+  .quicklink:hover{transform:translateY(-1px);}
+  .quicklink.primary{background:var(--purple);color:#fff;}
+  .quicklink.secondary{background:var(--purple-light);color:var(--purple-dark);}
+  @media (max-width:700px){
+    .quickbar-inner{flex-direction:column;align-items:stretch;}
+    .quickbar-links{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <svg class="logo-mark" viewBox="0 0 23.34 23.21" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.3405 18.0675H17.2352V23.1429H22.3405V18.0675Z" fill="#FFFFFF"/>
+        <path d="M5.10529 6.64643L0 11.7254V18.0891C0 20.8816 2.27851 23.1467 5.08749 23.1467H11.4887L16.594 18.0714H5.10529V6.64643Z" fill="#FFFFFF"/>
+        <path d="M17.2311 6.01289V17.4343L22.3364 12.3589V0.9375H10.8513L5.746 6.01289H17.2311Z" fill="#FE8F1C"/>
+      </svg>
+      <span class="brand-name">Logcomex · Contas a Pagar</span>
+    </div>
+    <span class="hero-badge">Onboarding · Cartão Corporativo</span>
+    <h1>Cartão Azulzinho para viagens internacionais</h1>
+    <p>Guia rápido do que muda, como usar e o que fazer em cada situação — leia até o fim antes da sua próxima viagem.</p>
+  </div>
+</div>
+
+<div class="quickbar">
+  <div class="container">
+    <div class="quickbar-inner">
+      <div class="quickbar-label">📌 Acesso rápido</div>
+      <div class="quickbar-links">
+        <a class="quicklink primary" href="https://drive.google.com/file/d/1dyqhkz4wt_wSrwc6lTLjPbxoC7THH32L/view" target="_blank">🎥 Rever gravação do treinamento</a>
+        <a class="quicklink secondary" href="./biblioteca-videos-azulzinho.pdf" target="_blank">📹 Biblioteca de vídeos rápidos</a>
+        <a class="quicklink secondary" href="./manual-colaboradores-onfly.pdf" target="_blank">📘 Manual completo (PDF)</a>
+        <a class="quicklink secondary" href="#suporte">💬 Canais de suporte</a>
+        <a class="quicklink secondary" href="https://lp.onfly.com.br/canais-de-atendimento-cliente" target="_blank">🧳 Reservas (passagem/hospedagem)</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="section-tag"><div class="bar"></div><span>O que mudou</span></div>
+    <h2 class="section-title">Rendimento → Azulzinho</h2>
+    <p class="section-sub">O processo muda de ponta a ponta — do jeito que o cartão chega até você, até como você presta contas depois da viagem.</p>
+
+    <div class="compare-wrap">
+      <div class="compare-col antes">
+        <div class="compare-head"><span class="dot"></span><h3>Antes · Banco Rendimento</h3></div>
+        <div class="compare-item"><span class="ico">💵</span><span>Cartão em USD — você via só em dólar + moeda local. A conversão para R$ era feita depois, na hora do lançamento.</span></div>
+        <div class="compare-item"><span class="ico">🧾</span><span>Você guardava os comprovantes físicos e mandava depois — ou nem mandava.</span></div>
+        <div class="compare-item"><span class="ico">🔐</span><span>Login individual em portal separado, com problema de senha toda hora.</span></div>
+        <div class="compare-item"><span class="ico">🪪</span><span>Cartão nominal, emitido um por pessoa.</span></div>
+        <div class="compare-item"><span class="ico">⏱️</span><span>Precisou de saldo extra durante a viagem? Levava até <b>48h para compensar</b> no cartão.</span></div>
+      </div>
+
+      <div class="compare-arrow">→</div>
+
+      <div class="compare-col agora">
+        <div class="compare-head"><span class="dot"></span><h3>Agora · Azulzinho (Onfly)</h3></div>
+        <div class="compare-item"><span class="ico">🇧🇷</span><span>O cartão já mostra tudo em <b>R$ direto</b> — sem você se preocupar com câmbio.</span></div>
+        <div class="compare-item"><span class="ico">🤖</span><span>A <b>IA lê o comprovante automaticamente</b> assim que você anexa a foto no app — muito mais rápido.</span></div>
+        <div class="compare-item"><span class="ico">📱</span><span>Tudo pelo <b>app Onfly</b>, com PIN e senha próprios do cartão.</span></div>
+        <div class="compare-item"><span class="ico">🔄</span><span>O cartão pode ser <b>compartilhado</b> entre colaboradores em viagens diferentes — o saldo é liberado conforme a necessidade de cada viagem.</span></div>
+        <div class="compare-item"><span class="ico">⚡</span><span>Saldo extra liberado <b>na hora, sem delay</b> — assim que autorizado.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-tag"><div class="bar"></div><span>Benefícios</span></div>
+    <h2 class="section-title">Principais ganhos operacionais</h2>
+    <p class="section-sub">Menos burocracia pra você, mais controle e agilidade pro financeiro.</p>
+
+    <div class="gains-grid">
+      <div class="gain-card"><div class="gain-ico">📱</div><div><h4>Prestação de contas pelo celular</h4><p>Registre gastos com foto ou aproximação durante a viagem. Fim do e-mail com recibo e da planilha pós-viagem.</p></div></div>
+      <div class="gain-card"><div class="gain-ico">🤖</div><div><h4>IA na leitura de comprovantes</h4><p>A IA processa os recibos automaticamente e gera relatório de viagem com validade fiscal.</p></div></div>
+      <div class="gain-card"><div class="gain-ico">⚡</div><div><h4>Saldo liberado em tempo real</h4><p>O time financeiro libera o saldo direto pelo painel assim que a viagem é confirmada — sem espera por recarga via corretora, como era antes. Solicite com antecedência (veja o prazo ao lado) e o saldo já aparece disponível no seu cartão.</p></div></div>
+      <div class="gain-card"><div class="gain-ico">🏦</div><div><h4>Conta centralizadora Logcomex</h4><p>Conta BTG vinculada à Onfly centraliza todos os cartões. Saldo não utilizado pode ser transferido de volta normalmente.</p></div></div>
+      <div class="gain-card"><div class="gain-ico">⚙️</div><div><h4>Políticas personalizáveis</h4><p>Limites por colaborador e tipo de despesa configurados conforme política interna — com bloqueio automático de desvios.</p></div></div>
+      <div class="gain-card"><div class="gain-ico">🔗</div><div><h4>Integração direta com Omie</h4><p>Despesas aprovadas entram automaticamente no Omie como títulos quitados via API — eliminando lançamento manual.</p></div></div>
+      <div class="gain-card" style="grid-column:1 / -1;"><div class="gain-ico">🆘</div><div><h4>Suporte 24/7</h4><p>Atendimento por e-mail, chat na plataforma e WhatsApp em viagens emergenciais — você nunca fica sem suporte fora do horário comercial, mesmo em outro país. Contatos completos no final desta página.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-tag"><div class="bar"></div><span>Regras de uso</span></div>
+    <h2 class="section-title">Como e quando usar o cartão</h2>
+    <p class="section-sub">Leia com atenção — o descumprimento pode travar a liberação da sua próxima viagem.</p>
+
+    <div class="rules-list">
+      <div class="rule-item"><span class="rule-ico">✈️</span><span>Este cartão é para uso <b>em viagem</b>, não no dia a dia. Fora do período da viagem, o cartão não deve ser utilizado.</span></div>
+      <div class="rule-item"><span class="rule-ico">📋</span><span>Ao retornar da viagem, é <b>obrigatório entregar o relatório de despesas</b> com todos os comprovantes anexados, em até <b>5 dias úteis</b>. A falta desse relatório completo <b>pode bloquear a liberação de saldo para a próxima viagem</b>.
+        <div class="subtext">⚠️ <b>Atenção se a viagem for na última semana do mês:</b> a prestação de contas precisa estar completa e correta até o <b>dia 30</b>, para entrar no fechamento mensal. Após o dia 30, resta apenas <b>1 dia útil do mês seguinte</b> (até o dia 02) para ajustes. A partir do dia 02, não é mais possível ajustar — o lançamento fica para o mês subsequente.</div>
+      </span></div>
+      <div class="rule-item national">
+        <span class="rule-ico">🇧🇷</span>
+        <div>
+          <span><b>Válido apenas para viagens internacionais.</b> Para viagens dentro do Brasil, nada muda: o processo continua sendo o mesmo — gastos da viagem precisam de recarga solicitada no <b>Swile, com o time de DP</b>, através do link:</span>
+          <p style="margin:8px 0 4px;"><a href="https://app.pipefy.com/public/form/9Vppoov9" target="_blank" style="color:var(--purple);font-weight:600;">Solicitação de valor para o time de DP →</a></p>
+          <div class="national-callout">
+            <p>⚠️ <b>Importante:</b> os valores carregados no cartão devem ser utilizados <b>exclusivamente</b> para despesas relacionadas à viagem a trabalho.</p>
+            <p><b>Despesas não permitidas ❌</b></p>
+            <ul>
+              <li>Compras pessoais (roupas, eletrônicos, presentes)</li>
+              <li>Entretenimento</li>
+              <li>Saques em espécie</li>
+            </ul>
+            <p>Compra de <b>passagem/hospedagem deve ser feita pela Onfly</b>.</p>
+            <p><b>Seguro de viagem:</b> a contratação deve ser feita no ato da compra da passagem, <b>pela Onfly</b>. Caso não seja possível pela Onfly, aciona-se o time de Compras — mas a prioridade é sempre pela Onfly.</p>
+          </div>
+        </div>
+      </div>
+      <div class="rule-item"><span class="rule-ico">⏳</span><span>A <b>recarga do cartão internacional precisa ser solicitada com no mínimo 30 dias de antecedência</b> da viagem, para garantir a liberação do saldo a tempo.</span></div>
+      <div class="rule-item"><span class="rule-ico">🚫</span><span><b>Saque não está liberado</b> no cartão. Não é possível sacar em espécie.</span></div>
+      <div class="rule-item"><span class="rule-ico">💳</span><span><b>Cartão virtual não será liberado</b> — apenas o físico.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-tag"><div class="bar"></div><span>Pontos de atenção</span></div>
+    <h2 class="section-title">Fique atento a estas situações</h2>
+    <p class="section-sub">Reforço rápido do que fazer em cada caso comum.</p>
+
+    <div class="attn-grid">
+      <div class="attn-card neutral"><span class="attn-tag">Adiantamento</span><p style="margin:0;">Sem adiantamento em dinheiro — só recarga no cartão. O app até mostra a opção, mas <b>não vai ser usada</b>.</p></div>
+      <div class="attn-card neutral"><span class="attn-tag">Reembolso</span><p style="margin:0;">Continua pelo <b>Pipefy</b>. Não usem a função de reembolso da Onfly por enquanto.</p></div>
+      <div class="attn-card neutral"><span class="attn-tag">Parcelamento</span><p style="margin:0;">Cartão é pré-pago, sempre à <b>vista</b>. Sem limite liberado, o cartão simplesmente não passa.</p></div>
+      <div class="attn-card neutral"><span class="attn-tag">Despesas</span><p style="margin:0;">Toda compra já vira despesa automática. Vocês só <b>anexam o comprovante</b> e revisam a categoria.</p></div>
+      <div class="attn-card warn"><span class="attn-tag">Relatório enviado</span><p style="margin:0;">Depois de clicar em "Enviar para Aprovação", <b>não dá mais pra editar</b>. Revisem tudo antes.</p></div>
+      <div class="attn-card warn"><span class="attn-tag">Cobrança duplicada</span><p style="margin:0;">Primeiro passo: contatar <b>diretamente o estabelecimento</b> e pedir o cancelamento.</p></div>
+      <div class="attn-card danger"><span class="attn-tag">Compra não reconhecida</span><p style="margin:0;"><b>Bloqueiem o cartão imediatamente</b> ao identificar uma cobrança que vocês não reconhecem.</p></div>
+      <div class="attn-card danger"><span class="attn-tag">Perda / roubo / furto</span><p style="margin:0;"><b>Avisem IMEDIATAMENTE</b> e solicitem o bloqueio com urgência. Até o aviso, a responsabilidade por uso indevido é de quem estava com o cartão.</p></div>
+      <div class="attn-card danger"><span class="attn-tag">Senha do cartão</span><p style="margin:0;">Errou a senha <b>3 vezes</b>? O cartão é bloqueado automaticamente. Nesse caso, acione o administrador para desbloqueio.</p></div>
+      <div class="attn-card neutral"><span class="attn-tag">Carteira digital</span><p style="margin:0;">Cadastro do cartão em Apple Pay / Google Pay está <b>liberado apenas para a diretoria</b>. Demais colaboradores usam o cartão físico.</p></div>
+      <div class="attn-card warn" style="grid-column:1 / -1;">
+        <span class="attn-tag">Compras acima de R$ 3.000</span>
+        <p style="margin:0 0 10px;">Podem travar por suspeita de fraude. Se souberem que vão fazer uma compra grande (hotel, por exemplo), <b>avisem o administrador com antecedência</b> pra liberar.</p>
+        <p style="margin:0;"><b>Se já travou:</b> o administrador confirma o valor (e o site, se for compra online) e envia e-mail para <b>suporte@contaswap.com</b> com: nome da empresa, CNPJ, valor da compra, site (se online) e o ID da transação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="suporte">
+      <div class="section-tag"><div class="bar" style="background:#fff;"></div><span style="color:#fff;">Precisa de ajuda?</span></div>
+      <h2 class="section-title" style="color:#fff;">Qualquer problema, é só acionar</h2>
+      <div class="support-grid">
+        <div class="support-card">
+          <h4>🛠️ Onfly — Dia a dia</h4>
+          <p>Chat na própria plataforma</p>
+          <p>E-mail: <a href="mailto:suporte.azulzinho@onfly.com.br">suporte.azulzinho@onfly.com.br</a></p>
+          <p>WhatsApp: (31) 4000-2567 <i>(opção "Azulzinho")</i></p>
+          <p>Seg a sex, 9h às 18h</p>
+        </div>
+        <div class="support-card">
+          <h4>🆘 Onfly — Emergência em viagem (24/7)</h4>
+          <p>E-mail: <a href="mailto:atendimento@onfly.com.br">atendimento@onfly.com.br</a></p>
+          <p>Telefone: (31) 3181-0456</p>
+        </div>
+        <div class="support-card">
+          <h4>🎥 Rever o treinamento</h4>
+          <p>Gravação completa da reunião de onboarding, caso queira rever algum ponto com calma:</p>
+          <p><a href="https://drive.google.com/file/d/1dyqhkz4wt_wSrwc6lTLjPbxoC7THH32L/view" target="_blank">Assistir gravação →</a></p>
+        </div>
+        <div class="support-card">
+          <h4>🧳 Reservas (passagem/hospedagem)</h4>
+          <p>Canal de atendimento da Onfly específico para dúvidas de reserva:</p>
+          <p><a href="https://lp.onfly.com.br/canais-de-atendimento-cliente" target="_blank">Ver canais de reservas →</a></p>
+        </div>
+        <div class="support-card">
+          <h4>📹 Biblioteca de vídeos rápidos</h4>
+          <p>Tutoriais curtos por tema: acesso ao app, PIN/senha, Pix, despesas, relatórios e recarga.</p>
+          <p><a href="./biblioteca-videos-azulzinho.pdf" target="_blank">Abrir PDF com os links →</a></p>
+        </div>
+        <div class="support-card">
+          <h4>📘 Manual completo (PDF)</h4>
+          <p>Guia oficial da Onfly com todos os passos detalhados de uso do app e do cartão.</p>
+          <p><a href="./manual-colaboradores-onfly.pdf" target="_blank">Abrir manual completo →</a></p>
+        </div>
+        <div class="support-card" style="grid-column:1 / -1;">
+          <h4>💜 Time Financeiro Logcomex</h4>
+          <p>Para dúvidas sobre limites, recarga, política interna ou qualquer travamento: fale com <b>Kamilla</b> ou <b>Thaiane</b>.</p>
+        </div>
+      </div>
+      <p class="support-note">Guardem este material — ele volta a ser útil na próxima viagem internacional.</p>
+    </div>
+  </div>
+</section>
+
+<footer>Logcomex · Contas a Pagar · Material de onboarding Cartão Azulzinho · Jul/2026</footer>
+
+</body>
+</html>
