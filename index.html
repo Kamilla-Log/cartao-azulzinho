@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
 <title>Cartão Azulzinho · Onboarding · Logcomex</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Funnel+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
+    color-scheme: light only;
     --purple:#6613D0;
     --purple-dark:#2D085D;
     --purple-light:#E2D0FA;
@@ -145,11 +147,18 @@
 
   /* SUPPORT / CONTACT FOOTER */
   .support-section{
+    background-color: var(--purple-dark);
     background:linear-gradient(135deg, var(--purple-dark), var(--purple));
     color:#fff;border-radius:20px;padding:36px 32px;margin:0 auto;
   }
-  .support-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:22px;}
-  @media (max-width:760px){.support-grid{grid-template-columns:1fr;}}
+  .support-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:14px;}
+  .support-grid.materials{grid-template-columns:1fr 1fr 1fr;margin-bottom:0;}
+  @media (max-width:760px){.support-grid, .support-grid.materials{grid-template-columns:1fr;}}
+  .support-subhead{
+    font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    color:rgba(255,255,255,.65);margin:28px 0 4px;
+  }
+  .support-subhead:first-of-type{margin-top:22px;}
   .support-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:20px;}
   .support-card h4{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
   .support-card p{font-size:13.5px;margin:6px 0;opacity:.92;}
@@ -324,8 +333,12 @@
 </section>
 
 <section id="suporte">
+  <div class="container">
+    <div class="support-section">
       <div class="section-tag"><div class="bar" style="background:#fff;"></div><span style="color:#fff;">Precisa de ajuda?</span></div>
       <h2 class="section-title" style="color:#fff;">Qualquer problema, é só acionar</h2>
+
+      <p class="support-subhead">📞 Canais de contato</p>
       <div class="support-grid">
         <div class="support-card">
           <h4>🛠️ Onfly — Dia a dia</h4>
@@ -340,28 +353,32 @@
           <p>Telefone: (31) 3181-0456</p>
         </div>
         <div class="support-card">
-          <h4>🎥 Rever o treinamento</h4>
-          <p>Gravação completa da reunião de onboarding, caso queira rever algum ponto com calma:</p>
-          <p><a href="https://drive.google.com/file/d/1dyqhkz4wt_wSrwc6lTLjPbxoC7THH32L/view" target="_blank">Assistir gravação →</a></p>
-        </div>
-        <div class="support-card">
           <h4>🧳 Reservas (passagem/hospedagem)</h4>
           <p>Canal de atendimento da Onfly específico para dúvidas de reserva:</p>
           <p><a href="https://lp.onfly.com.br/canais-de-atendimento-cliente" target="_blank">Ver canais de reservas →</a></p>
         </div>
         <div class="support-card">
-          <h4>📹 Biblioteca de vídeos rápidos</h4>
-          <p>Tutoriais curtos por tema: acesso ao app, PIN/senha, Pix, despesas, relatórios e recarga.</p>
-          <p><a href="./biblioteca-videos-azulzinho.pdf" target="_blank">Abrir PDF com os links →</a></p>
-        </div>
-        <div class="support-card">
-          <h4>📘 Manual completo (PDF)</h4>
-          <p>Guia oficial da Onfly com todos os passos detalhados de uso do app e do cartão.</p>
-          <p><a href="./manual-colaboradores-onfly.pdf" target="_blank">Abrir manual completo →</a></p>
-        </div>
-        <div class="support-card" style="grid-column:1 / -1;">
           <h4>💜 Time Financeiro Logcomex</h4>
           <p>Para dúvidas sobre limites, recarga, política interna ou qualquer travamento: fale com <b>Kamilla</b> ou <b>Thaiane</b>.</p>
+        </div>
+      </div>
+
+      <p class="support-subhead">📚 Materiais de apoio</p>
+      <div class="support-grid materials">
+        <div class="support-card">
+          <h4>🎥 Rever o treinamento</h4>
+          <p>Gravação completa da reunião de onboarding:</p>
+          <p><a href="https://drive.google.com/file/d/1dyqhkz4wt_wSrwc6lTLjPbxoC7THH32L/view" target="_blank">Assistir gravação →</a></p>
+        </div>
+        <div class="support-card">
+          <h4>📹 Vídeos rápidos</h4>
+          <p>Tutoriais curtos: acesso, PIN/senha, Pix, despesas, relatórios, recarga.</p>
+          <p><a href="./biblioteca-videos-azulzinho.pdf" target="_blank">Abrir PDF →</a></p>
+        </div>
+        <div class="support-card">
+          <h4>📘 Manual completo</h4>
+          <p>Guia oficial da Onfly com todos os passos detalhados.</p>
+          <p><a href="./manual-colaboradores-onfly.pdf" target="_blank">Abrir PDF →</a></p>
         </div>
       </div>
       <p class="support-note">Guardem este material — ele volta a ser útil na próxima viagem internacional.</p>
